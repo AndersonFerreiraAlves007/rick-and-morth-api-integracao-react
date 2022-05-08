@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Card from './components/Card'
+import withLayout from './components/Layout'
 
-function App() {
-
+const Content = () => {
   const [episodios, setEpisodios] = useState([])
   const [episodioSelecionado, setEpisodioSelecionado] = useState(null)
   const [personagens, setPersonagens] = useState([])
@@ -74,7 +74,7 @@ function App() {
         !loading 
         ? 
         <div >
-          <h1 style={{ textAlign: 'center', margin: '20px 0' }}>INTEGRAÇÃO COM A API DO RICK AND MORTY</h1>
+          
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '30px 0' }}>
             <label for="episodio" style={{ marginRight: '10px', color: 'crimson', fontSize: '20px', fontWeight: 'bold' }}>Escolha um episódio:</label>
             { 
@@ -114,8 +114,7 @@ function App() {
           </div>
         </div> 
         :
-        <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-          <h1 style={{ textAlign: 'center', margin: '20px 0' }}>INTEGRAÇÃO COM A API DO RICK AND MORTY</h1>
+        <div style={{ height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
           <div style={{ flex: 1,  fontSize: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             Buscando os dados...
           </div>
@@ -123,6 +122,12 @@ function App() {
       }
     </>
   );
+}
+
+const Layout = withLayout(Content)
+
+function App() {
+  return < Layout/>
 }
 
 export default App;
