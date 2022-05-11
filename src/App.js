@@ -1,6 +1,40 @@
 import React, { useState, useEffect } from 'react'
 import Card from './components/Card'
 import withLayout from './components/Layout'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+`
+
+const ContainerLoading = styled.div`
+  height: 100%; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`
+
+const ListCards = styled.div`
+  display: flex; 
+  flex-wrap: wrap; 
+  padding: 20px;
+`
+
+const ContainerCard = styled.div`
+  width: 20%;
+  padding: 20px;
+`
+
+const Label = styled.label`
+  margin-right: 10px;
+  color: crimson;
+  font-size: 20px;
+  font-weight: bold;
+`
 
 const Content = () => {
   const [episodios, setEpisodios] = useState([])
@@ -75,8 +109,8 @@ const Content = () => {
         ? 
         <div >
           
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '30px 0' }}>
-            <label for="episodio" style={{ marginRight: '10px', color: 'crimson', fontSize: '20px', fontWeight: 'bold' }}>Escolha um episódio:</label>
+          <Container>
+            <Label for="episodio">Escolha um episódio:</Label>
             { 
               episodioSelecionado && <select 
                 name="episodio" 
@@ -95,11 +129,11 @@ const Content = () => {
                 }
               </select>
             }
-          </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', padding: '20px' }}>
+          </Container>
+          <ListCards>
             { 
               personagens.map(item => (
-                <div style={{ width: '20%', padding: '20px' }}>
+                <ContainerCard>
                   <Card
                     name={item.name}
                     status={item.status}
@@ -108,17 +142,17 @@ const Content = () => {
                     gender={item.gender}
                     image={item.image}
                   />
-                </div>
+                </ContainerCard>
               )) 
             }
-          </div>
+          </ListCards>
         </div> 
         :
-        <div style={{ height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+        <ContainerLoading>
           <div style={{ flex: 1,  fontSize: '40px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             Buscando os dados...
           </div>
-        </div>
+        </ContainerLoading>
       }
     </>
   );

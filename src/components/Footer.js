@@ -1,11 +1,21 @@
 import React from 'react'
+import styled from 'styled-components'
 
-const Footer = () => {
+const Footer = styled.footer`
+  background-color: blue; 
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  color: white;
+`
+
+const FooterLocal = () => {
   return (
-    <footer style={{ backgroundColor: 'blue', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white' }}>
+    <Footer >
       Anderson Pages. Aproveite nossa integração com a api do rick and morty e conheça diversos personagens!
-    </footer>
+    </Footer>
   )
 }
 
-export default Footer
+export default FooterLocal

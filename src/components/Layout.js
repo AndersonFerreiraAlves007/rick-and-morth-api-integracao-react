@@ -1,28 +1,50 @@
 import React from 'react'
+import styled from 'styled-components'
 import AppBar from './AppBar'
 import Footer from './Footer'
 import SideBar from './SideBar'
 
-/* const Layout = ({ children }) => {
-  return (
-    <div class="grid-container">
-      <div class="item1"><AppBar/></div>
-      <div class="item2"><SideBar/></div>
-      <div class="item3">{children}</div>  
-      <div class="item5"><Footer/></div>
-    </div>
-  )
-} */
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 15vh 75vh 10vh;
+  grid-template-areas: "header header" "sidenav content" "footer footer";
+`
+
+const AppBarContainer = styled.div`
+  grid-area: header;
+`
+
+const SideBarContainer = styled.div`
+  grid-area: sidenav; 
+`
+
+const ComponentContainer = styled.div`
+  grid-area: content; 
+  overflow: auto;
+`
+
+const FooterContainer = styled.div`
+  grid-area: footer;
+`
 
 const withLayout = (Component) => {
   return function () {
     return (
-      <div class="grid-container">
-        <div class="item1"><AppBar/></div>
-        <div class="item2"><SideBar/></div>
-        <div class="item3">{<Component/>}</div>  
-        <div class="item5"><Footer/></div>
-      </div>
+      <GridContainer>
+        <AppBarContainer>
+          <AppBar/>
+        </AppBarContainer>
+        <SideBarContainer>
+          <SideBar/>
+        </SideBarContainer>
+        <ComponentContainer>
+          <Component/>
+        </ComponentContainer>  
+        <FooterContainer>
+          <Footer/>
+        </FooterContainer>
+      </GridContainer>
     )
   }
 } 
