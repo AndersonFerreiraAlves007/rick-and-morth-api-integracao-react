@@ -56,7 +56,7 @@ export default function Card({
   return (
     <CardContainer className="transform">
       <CardMedia image={image}>
-        { status === 'Alive' && 
+        { status === 'Dead' && 
         <CardLayerStatus>
           {status}
         </CardLayerStatus> }
