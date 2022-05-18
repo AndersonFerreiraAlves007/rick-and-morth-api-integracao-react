@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from "react-router-dom";
 
 const Aside = styled.aside`
   background-color: green;
@@ -19,7 +20,7 @@ const Nav = styled.nav`
   margin: 10px ;
 `
 
-const Link = styled.a`
+const Link2 = styled(Link)`
   margin: 10px 0;
   font-size: 20px;
 `
@@ -29,9 +30,11 @@ const SideBar = () => {
     <Aside>
       <H3>Documentação</H3>
       <Nav>
-        <Link href='https://rickandmortyapi.com/documentation/#character-schema'>Personagens</Link>
+        {/* <Link href='https://rickandmortyapi.com/documentation/#character-schema'>Personagens</Link>
         <Link href='https://rickandmortyapi.com/documentation/#location-schema'>Localização</Link>
-        <Link href='https://rickandmortyapi.com/documentation/#episode-schema'>Episódios</Link>
+        <Link href='https://rickandmortyapi.com/documentation/#episode-schema'>Episódios</Link> */}
+        <Link2 to="/">Home</Link2>
+        <Link2 to="/personagens">Personagens</Link2>
       </Nav>
     </Aside>
   )

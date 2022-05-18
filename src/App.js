@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react'
 import Card from './components/Card'
 import withLayout from './components/Layout'
 import styled from 'styled-components'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -158,10 +163,31 @@ const Content = () => {
   );
 }
 
+const Content2 = () => {
+  
+
+  return (
+    <Container style={{ height: '100%' }}>
+     <img 
+     style={{ height: '100%', width: '100%' }}
+      src="https://www.einerd.com.br/wp-content/uploads/2021/09/rick-e-morty-1-890x466.jpg" alt="" 
+      />
+    </Container>
+  );
+}
+
 const Layout = withLayout(Content)
 
+const Layout2 = withLayout(Content2)
+
 function App() {
-  return < Layout/>
+  /* return < Layout/> */
+  return <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Layout2 />}/>
+      <Route path="/personagens" element={<Layout />}/>
+    </Routes>
+  </BrowserRouter>
 }
 
 export default App;
